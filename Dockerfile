@@ -4,8 +4,9 @@ RUN git clone -b master https://github.com/barsmiko1/html.git
 RUN cd 2106_soft_landing && tar -czf soft.tgz * && mv soft.tgz /root/soft.tgz
 
 FROM ubuntu:latest
-LABEL " "Marketing"
+LABEL "project"="Marketing"
 ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt update && apt install apache2 git wget -y
 COPY --from=BUILD_IMAGE /root/soft.tgz /var/www/html/
 RUN cd /var/www/html/ && tar xzf soft.tgz
